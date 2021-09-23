@@ -1,12 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
-import Dashboard from './Views/Dashboard'
+
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import ResponsiveDrawer from './Views/Dashboard/index';
+import { BrowserRouter as Router, } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Montserrat",
+  },
+  listItemText: {
+    fontFamily: "Montserrat",
+  }
+});
 
 function App() {
   return (
-    <div className="App">
-      <Dashboard/>
-    </div>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div >
+          <ResponsiveDrawer />
+          <ToastContainer />
+        </div>
+      </ThemeProvider>
+    </Router>
+
   );
 }
 
